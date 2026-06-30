@@ -16,16 +16,16 @@ Grove Creator Kit の **入力（センサー／スイッチ）モジュール**
 
 ## 入力サンプル一覧
 
-| サンプル（.py へのリンク） | 部品 | 信号 | 動作の概要 |
-| --- | --- | --- | --- |
-| [water_sensor.py](../Level1_samples/water_sensor.py) | Water Sensor | デジタル | 水検知で `WET`、乾燥で `dry` |
-| [light_sensor.py](../Level1_samples/light_sensor.py) | Light Sensor v1.2 | アナログ(ADC) | 明るさを 0–65535 で表示 |
-| [magnetic_switch.py](../Level1_samples/magnetic_switch.py) | Magnetic Switch | デジタル | 磁石の接近を検知 |
-| [dht11.py](../Level1_samples/dht11.py) | 温湿度センサー DHT11 | デジタル(1線) | 温度[℃]・湿度[%]を表示 |
-| [moisture_sensor.py](../Level1_samples/moisture_sensor.py) | Moisture Sensor | アナログ(ADC) | 土壌水分値と WET/dry |
-| [pir_motion_sensor.py](../Level1_samples/pir_motion_sensor.py) | Mini PIR Motion | デジタル | 動きを検知すると `MOTION` |
-| [loudness_sensor.py](../Level1_samples/loudness_sensor.py) | Loudness Sensor | アナログ(ADC) | 音量を 0–65535 で表示 |
-| [ultrasonic_ranger.py](../Level1_samples/ultrasonic_ranger.py) | Ultrasonic Ranger | デジタル(単線) | 距離[cm]を表示 |
+| サンプル（.py へのリンク） | SKU | Product Name | 信号 | 動作の概要 |
+| --- | --- | --- | --- | --- |
+| [water_sensor.py](../Level1_samples/water_sensor.py) | 101020018 | Grove - Water Sensor | デジタル | 水検知で `WET`、乾燥で `dry` |
+| [light_sensor.py](../Level1_samples/light_sensor.py) | 101020132 | Grove - Light Sensor v1.2 | アナログ(ADC) | 明るさを 0–65535 で表示 |
+| [magnetic_switch.py](../Level1_samples/magnetic_switch.py) | 101020038 | Grove - Magnetic Switch | デジタル | 磁石の接近を検知 |
+| [dht11.py](../Level1_samples/dht11.py) | 101020011 | Grove - Temperature & Humidity Sensor (DHT11) | デジタル(1線) | 温度[℃]・湿度[%]を表示 |
+| [moisture_sensor.py](../Level1_samples/moisture_sensor.py) | 101020008 | Grove - Moisture Sensor | アナログ(ADC) | 土壌水分値と WET/dry |
+| [pir_motion_sensor.py](../Level1_samples/pir_motion_sensor.py) | 101020353 | Grove - Mini PIR Motion Sensor | デジタル | 動きを検知すると `MOTION` |
+| [loudness_sensor.py](../Level1_samples/loudness_sensor.py) | 101020063 | Grove - Loudness Sensor | アナログ(ADC) | 音量を 0–65535 で表示 |
+| [ultrasonic_ranger.py](../Level1_samples/ultrasonic_ranger.py) | 101020010 | Grove - Ultrasonic Ranger | デジタル(単線) | 距離[cm]を表示 |
 
 ---
 
