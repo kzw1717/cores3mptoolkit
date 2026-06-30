@@ -18,16 +18,16 @@ Grove Creator Kit の **入力（センサー／スイッチ）モジュール**
 
 難易度は **Python 初心者の大学1年生**を対象に、5段階（**1=一番簡単 〜 5=一番難しい**）で示しています。
 
-| 難易度 | サンプル（.py へのリンク） | SKU | Product Name | 信号 | 動作の概要 |
-| :---: | --- | --- | --- | --- | --- |
-| 1 | [magnetic_switch.py](../Level1_samples/magnetic_switch.py) | 101020038 | Grove - Magnetic Switch | デジタル | 磁石の接近を検知 |
-| 2 | [water_sensor.py](../Level1_samples/water_sensor.py) | 101020018 | Grove - Water Sensor | デジタル | 水検知で `WET`、乾燥で `dry` |
-| 2 | [pir_motion_sensor.py](../Level1_samples/pir_motion_sensor.py) | 101020353 | Grove - Mini PIR Motion Sensor | デジタル | 動きを検知すると `MOTION` |
-| 2 | [light_sensor.py](../Level1_samples/light_sensor.py) | 101020132 | Grove - Light Sensor v1.2 | アナログ(ADC) | 明るさを 0–65535 で表示 |
-| 2 | [loudness_sensor.py](../Level1_samples/loudness_sensor.py) | 101020063 | Grove - Loudness Sensor | アナログ(ADC) | 音量を 0–65535 で表示 |
-| 3 | [moisture_sensor.py](../Level1_samples/moisture_sensor.py) | 101020008 | Grove - Moisture Sensor | アナログ(ADC) | 土壌水分値と WET/dry |
-| 3 | [dht11.py](../Level1_samples/dht11.py) | 101020011 | Grove - Temperature & Humidity Sensor (DHT11) | デジタル(1線) | 温度[℃]・湿度[%]を表示 |
-| 5 | [ultrasonic_ranger.py](../Level1_samples/ultrasonic_ranger.py) | 101020010 | Grove - Ultrasonic Ranger | デジタル(単線) | 距離[cm]を表示 |
+| 番号 | 難易度 | サンプル（.py へのリンク） | SKU | Product Name | 信号 | 動作の概要 |
+| :---: | :---: | --- | --- | --- | --- | --- |
+| IG1 | 1 | [magnetic_switch.py](../Level1_samples/magnetic_switch.py) | 101020038 | Grove - Magnetic Switch | デジタル | 磁石の接近を検知 |
+| IG2 | 2 | [water_sensor.py](../Level1_samples/water_sensor.py) | 101020018 | Grove - Water Sensor | デジタル | 水検知で `WET`、乾燥で `dry` |
+| IG3 | 2 | [pir_motion_sensor.py](../Level1_samples/pir_motion_sensor.py) | 101020353 | Grove - Mini PIR Motion Sensor | デジタル | 動きを検知すると `MOTION` |
+| IG4 | 2 | [light_sensor.py](../Level1_samples/light_sensor.py) | 101020132 | Grove - Light Sensor v1.2 | アナログ(ADC) | 明るさを 0–65535 で表示 |
+| IG5 | 2 | [loudness_sensor.py](../Level1_samples/loudness_sensor.py) | 101020063 | Grove - Loudness Sensor | アナログ(ADC) | 音量を 0–65535 で表示 |
+| IG6 | 3 | [moisture_sensor.py](../Level1_samples/moisture_sensor.py) | 101020008 | Grove - Moisture Sensor | アナログ(ADC) | 土壌水分値と WET/dry |
+| IG7 | 3 | [dht11.py](../Level1_samples/dht11.py) | 101020011 | Grove - Temperature & Humidity Sensor (DHT11) | デジタル(1線) | 温度[℃]・湿度[%]を表示 |
+| IG8 | 5 | [ultrasonic_ranger.py](../Level1_samples/ultrasonic_ranger.py) | 101020010 | Grove - Ultrasonic Ranger | デジタル(単線) | 距離[cm]を表示 |
 
 ---
 

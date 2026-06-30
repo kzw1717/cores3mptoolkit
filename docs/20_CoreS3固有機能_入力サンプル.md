@@ -17,14 +17,14 @@ Grove と違い**配線は不要**で、UIFlow2 の **M5 ライブラリ**で簡
 
 難易度は **Python 初心者の大学1年生**を対象に、5段階（**1=一番簡単 〜 5=一番難しい**）で示しています。
 
-| 難易度 | サンプル（.py へのリンク） | 機能（内蔵デバイス） | 動作の概要 |
-| :---: | --- | --- | --- |
-| 2 | [touch_position.py](../m5stack_samples/touch_position.py) | タッチパネル（FT6336U） | 触れた座標 (x, y) を表示 |
-| 2 | [battery_status.py](../m5stack_samples/battery_status.py) | 電源管理（AXP2101） | 電池残量[%]・電圧[mV]・充電状態を表示 |
-| 3 | [imu_accel.py](../m5stack_samples/imu_accel.py) | IMU（BMI270：加速度＋ジャイロ） | 6軸の値を画面と端末に表示 |
-| 3 | [touch_counter.py](../m5stack_samples/touch_counter.py) | タッチパネル | 画面タッチ回数を表示 |
-| 4 | [touch_button_single.py](../m5stack_samples/touch_button_single.py) | タッチパネル | 1つのボタンを押した回数を表示 |
-| 4 | [touch_button_yesno.py](../m5stack_samples/touch_button_yesno.py) | タッチパネル | YES/NO 2ボタンの押下回数を表示 |
+| 番号 | 難易度 | サンプル（.py へのリンク） | 機能（内蔵デバイス） | 動作の概要 |
+| :---: | :---: | --- | --- | --- |
+| IM1 | 2 | [touch_position.py](../m5stack_samples/touch_position.py) | タッチパネル（FT6336U） | 触れた座標 (x, y) を表示 |
+| IM2 | 2 | [battery_status.py](../m5stack_samples/battery_status.py) | 電源管理（AXP2101） | 電池残量[%]・電圧[mV]・充電状態を表示 |
+| IM3 | 3 | [imu_accel.py](../m5stack_samples/imu_accel.py) | IMU（BMI270：加速度＋ジャイロ） | 6軸の値を画面と端末に表示 |
+| IM4 | 3 | [touch_counter.py](../m5stack_samples/touch_counter.py) | タッチパネル | 画面タッチ回数を表示 |
+| IM5 | 4 | [touch_button_single.py](../m5stack_samples/touch_button_single.py) | タッチパネル | 1つのボタンを押した回数を表示 |
+| IM6 | 4 | [touch_button_yesno.py](../m5stack_samples/touch_button_yesno.py) | タッチパネル | YES/NO 2ボタンの押下回数を表示 |
 
 ---
 
