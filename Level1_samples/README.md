@@ -1,8 +1,14 @@
 # Grove Creater Kit — Level1 サンプルスクリプト解説
 
 M5Stack CoreS3（UIFlow2 ファームウェア / MicroPython）で、Grove Creater Kit の
-**Level1 対象 10 項目**を動かすためのサンプルスクリプト集です。
+**Level1 対象 10 項目**（入力8・出力2）を動かすためのサンプルスクリプト集です。
 各スクリプトは PC とつないだ状態で `mpremote run` を使って実行します。
+
+各サンプルには番号を付けています（**IG＝入力Grove / OG＝出力Grove**）。
+難易度・SKU・1本ごとの詳しい解説は、次の解説ページを参照してください。
+
+- 入力モジュール：[`docs/10_Grove_入力サンプル.md`](../docs/10_Grove_入力サンプル.md)
+- 出力モジュール：[`docs/11_Grove_出力サンプル.md`](../docs/11_Grove_出力サンプル.md)
 
 ---
 
@@ -15,7 +21,7 @@ M5Stack CoreS3（UIFlow2 ファームウェア / MicroPython）で、Grove Creat
 | PC ツール | `mpremote`（Python 製のコマンドラインツール） |
 | 接続 | USB Type-C ケーブルで CoreS3 と PC を接続 |
 
-CoreS3 の Grove ポートは次のとおりです（本キットのサンプルが使うのは PORT.A と PORT.B）。
+CoreS3 の Grove ポートは次のとおりです（本キットの Level1 サンプルが使うのは **PORT.B**）。
 
 | ポート | 種別 | ピン |
 | --- | --- | --- |
@@ -25,6 +31,7 @@ CoreS3 の Grove ポートは次のとおりです（本キットのサンプル
 
 Grove 4極ケーブルの色と信号の対応：**黒=GND / 赤=5V / 黄=信号(主) / 白=信号(副)**。
 Level1 の 10 項目はすべて **PORT.B の黄線（G9）** を信号に使います。
+（入力と出力の2モジュールを同時に使うときの接続方法は `docs/11` の「チャレンジ課題」を参照）
 
 ---
 
@@ -121,18 +128,29 @@ except KeyboardInterrupt:   # PC側 Ctrl-C で停止
 
 ## 4. 各スクリプトの説明
 
-| ファイル | 部品 | 種別 | 動作の概要 |
-| --- | --- | --- | --- |
-| `water_sensor.py` | Grove - Water Sensor | デジタル入力 | 水検知で `WET`、乾燥で `dry` を表示 |
-| `light_sensor.py` | Grove - Light Sensor v1.2 | アナログ(ADC) | 明るさを 0–65535 の数値で表示 |
-| `magnetic_switch.py` | Grove - Magnetic Switch | デジタル入力 | 磁石の接近で `MAGNET` を表示 |
-| `dht11.py` | Grove - DHT11 | デジタル(1線) | 温度[℃]・湿度[%]を表示 |
-| `red_led.py` | Grove - Red LED | デジタル出力 | 赤LEDを 0.5 秒ごとに点滅 |
-| `blue_led.py` | Grove - Blue LED | デジタル出力 | 青LEDを 0.5 秒ごとに点滅 |
-| `moisture_sensor.py` | Grove - Moisture Sensor | アナログ(ADC) | 土壌水分値と `WET/dry` を表示 |
-| `pir_motion_sensor.py` | Grove - Mini PIR Motion | デジタル入力 | 動きを検知すると `MOTION` を表示 |
-| `loudness_sensor.py` | Grove - Loudness Sensor | アナログ(ADC) | 音量を 0–65535 の数値で表示 |
-| `ultrasonic_ranger.py` | Grove - Ultrasonic Ranger | デジタル(単線SIG) | 距離[cm]を表示（範囲外は通知） |
+番号・難易度は解説ページ（`docs/10`・`docs/11`）と対応しています。
+難易度は **Python 初心者の大学1年生**を対象にした5段階（1=易しい〜5=難しい）です。
+1本ごとの詳しい解説は各解説ページを参照してください。
+
+### 入力モジュール（→ [docs/10](../docs/10_Grove_入力サンプル.md)）
+
+| 番号 | 難易度 | ファイル | Product Name | 信号 | 動作の概要 |
+| :---: | :---: | --- | --- | --- | --- |
+| IG1 | 1 | `magnetic_switch.py` | Grove - Magnetic Switch | デジタル | 磁石の接近で `MAGNET` を表示 |
+| IG2 | 2 | `water_sensor.py` | Grove - Water Sensor | デジタル | 水検知で `WET`、乾燥で `dry` |
+| IG3 | 2 | `pir_motion_sensor.py` | Grove - Mini PIR Motion Sensor | デジタル | 動きを検知すると `MOTION` |
+| IG4 | 2 | `light_sensor.py` | Grove - Light Sensor v1.2 | アナログ(ADC) | 明るさを 0–65535 で表示 |
+| IG5 | 2 | `loudness_sensor.py` | Grove - Loudness Sensor | アナログ(ADC) | 音量を 0–65535 で表示 |
+| IG6 | 3 | `moisture_sensor.py` | Grove - Moisture Sensor | アナログ(ADC) | 土壌水分値と `WET/dry` |
+| IG7 | 3 | `dht11.py` | Grove - Temperature & Humidity Sensor (DHT11) | デジタル(1線) | 温度[℃]・湿度[%]を表示 |
+| IG8 | 5 | `ultrasonic_ranger.py` | Grove - Ultrasonic Ranger | デジタル(単線SIG) | 距離[cm]を表示（範囲外は通知） |
+
+### 出力モジュール（→ [docs/11](../docs/11_Grove_出力サンプル.md)）
+
+| 番号 | 難易度 | ファイル | Product Name | 信号 | 動作の概要 |
+| :---: | :---: | --- | --- | --- | --- |
+| OG1 | 1 | `red_led.py` | Grove - Red LED | デジタル | 赤LEDを 0.5 秒ごとに点滅 |
+| OG2 | 1 | `blue_led.py` | Grove - Blue LED | デジタル | 青LEDを 0.5 秒ごとに点滅 |
 
 ### 補足メモ
 
