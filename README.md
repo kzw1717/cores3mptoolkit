@@ -76,4 +76,29 @@ PC で .py を書く  →  USB で CoreS3 に接続  →  mpremote run で実行
 
 ## ライセンス
 
-ライセンスは未定です（後日追加予定）。それまでの利用条件は作者にご確認ください。
+本リポジトリは [MIT License](LICENSE) の下で公開しています。
+Copyright (c) 2026 KOICHI WATANABE
+
+## 免責事項（注意書き）
+
+本リポジトリに掲載しているサンプルスクリプトおよび解説は、学習・参考を目的として
+「現状のまま（AS IS）」提供されるものであり、その正確性・完全性・特定目的への適合性・
+動作を含め、明示・黙示を問わず一切の保証をしません。
+
+本リポジトリ内のコンテンツ（スクリプト、解説、設定例などを含みます）の利用、
+または利用できないことに起因して生じたいかなる結果・損害（機器の故障・破損、
+データの消失、金銭的損害、その他の直接・間接の損害を含みますが、これらに限りません）
+についても、作成者および関係者は一切の責任を負いません。
+
+本リポジトリの内容の利用は、利用者ご自身の判断と責任において行ってください。
+ハードウェアの配線・電源・接続にあたっては、各機器の公式ドキュメントおよび
+安全上の注意を必ずご確認ください。
+
+---
+
+## Disclaimer
+
+The sample scripts and documentation in this repository are provided "AS IS",
+without warranty of any kind. The authors are not liable for any damages or
+consequences arising from the use of, or inability to use, the contents of this
+repository. Use at your own risk.
