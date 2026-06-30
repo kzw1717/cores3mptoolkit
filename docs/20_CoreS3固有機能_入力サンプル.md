@@ -20,6 +20,9 @@ Grove と違い**配線は不要**で、UIFlow2 の **M5 ライブラリ**で簡
 | [imu_accel.py](../m5stack_samples/imu_accel.py) | IMU（BMI270：加速度＋ジャイロ） | 6軸の値を画面と端末に表示 |
 | [touch_position.py](../m5stack_samples/touch_position.py) | タッチパネル（FT6336U） | 触れた座標 (x, y) を表示 |
 | [battery_status.py](../m5stack_samples/battery_status.py) | 電源管理（AXP2101） | 電池残量[%]・電圧[mV]・充電状態を表示 |
+| [touch_button_single.py](../m5stack_samples/touch_button_single.py) | タッチパネル | 1つのボタンを押した回数を表示 |
+| [touch_button_yesno.py](../m5stack_samples/touch_button_yesno.py) | タッチパネル | YES/NO 2ボタンの押下回数を表示 |
+| [touch_counter.py](../m5stack_samples/touch_counter.py) | タッチパネル | 画面タッチ回数を表示 |
 
 ---
 
@@ -60,6 +63,63 @@ charging = Power.isCharging()
 
 > **必須メモ**：`M5.begin()` と、ループ内の `M5.update()` を忘れると、IMU 値や
 > タッチが更新されません。M5 ライブラリを使うときの「お約束」です。
+
+---
+
+## 画面ボタン（タッチUI）
+
+タッチ座標を使って「画面上のボタン」を作るサンプルです。ボタンの絵は
+`M5.Lcd`（描画ライブラリ）で四角形を描き、タッチ座標がその四角形の中なら
+**所定の関数を実行する**、という作りです。
+
+| サンプル | 内容 |
+| --- | --- |
+| [touch_button_single.py](../m5stack_samples/touch_button_single.py) | 1つのボタン。押すたびに `on_button_pressed()` を実行し回数を表示 |
+| [touch_button_yesno.py](../m5stack_samples/touch_button_yesno.py) | YES / NO の2ボタン。それぞれ `on_yes()` / `on_no()` を実行し回数を表示 |
+| [touch_counter.py](../m5stack_samples/touch_counter.py) | 画面のどこでもタッチで `on_touch()` を実行しタッチ回数を表示 |
+
+### しくみ（3つの部品）
+
+**1. ボタンを描く**（四角形＋文字）
+
+```python
+M5.Lcd.fillRect(x, y, w, h, 0x1E88E5)   # 塗りつぶし四角（ボタン本体）
+M5.Lcd.drawRect(x, y, w, h, 0xFFFFFF)   # 枠線
+M5.Lcd.setTextColor(0xFFFFFF, 0x1E88E5)
+M5.Lcd.setTextSize(3)
+M5.Lcd.setCursor(x + 24, y + 16)
+M5.Lcd.print("PUSH")
+```
+
+**2. タッチが「ボタンの中」か判定する**
+
+```python
+def in_rect(px, py, rect):
+    x, y, w, h = rect
+    return x <= px <= x + w and y <= py <= y + h
+```
+
+**3. 「押した瞬間」だけ1回反応する（押しっぱなし対策）**
+
+タッチが「無→有」に変わった瞬間だけ処理します（こうしないと連続でカウントされます）。
+
+```python
+touching = M5.Touch.getCount() > 0
+if touching and not prev_touching:
+    if in_rect(M5.Touch.getX(), M5.Touch.getY(), BTN):
+        on_button_pressed()     # ← 所定の関数を呼ぶ
+prev_touching = touching
+```
+
+ボタンを増やしたいときは、四角形の座標を増やして `in_rect()` の判定と
+呼び出す関数を足すだけです（YES/NO サンプルがその例）。
+
+### 日本語の表示について（注意）
+
+本体の内蔵フォントは**日本語を含みません**。そのため各サンプルでは、
+**画面表示は英字**（例：`Pushed: 3 times`）、**日本語は PC のターミナル**に
+`print()` で出しています（例：`ボタンが 3 回押されました`）。
+画面に日本語を出したい場合は、日本語フォントを別途読み込む必要があります。
 
 ---
 
