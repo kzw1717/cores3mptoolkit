@@ -54,4 +54,44 @@ buz.duty_u16(32768)     # デューティ（強さ）。0 で停止
 
 ---
 
+## 入力＋出力の 2 モジュールを同時に使う（接続ポートの選び方）
+
+センサー（入力）とLED等（出力）を**同時に**使うときは、2つを別々のポートに挿します。
+**デジタル/PWM 出力は Port A・Port C どちらでも動く**ので、入力をアナログ向きの Port B に、
+出力を Port A か Port C に割り当てるのが定番です。
+
+| ポート | 黄線(信号:主) | 白線(信号:副) | 出力での注意 |
+| --- | --- | --- | --- |
+| PORT.A（赤） | G2 | G1 | I2Cモジュール（LCD/加速度/RTC等）を同じ Port A に挿すときは流用不可。挿さなければ通常GPIOとして使用可 |
+| PORT.B（黒） | G9 | G8 | 標準。アナログ入力に最適 |
+| PORT.C（青） | G17 | G18 | デジタル/PWM 出力は可。※ADC2 のためアナログ「入力」には不向き（出力なら無関係） |
+
+補足：CoreS3 の内蔵 I2C（IMU/PMU/RTC 等）は G11/G12 の別系統なので、Port A（G1/G2）を
+デジタル出力に使っても内蔵機能とは競合しません。
+
+### 例：入力＝Port B、出力＝Port A
+
+サンプルの**ピン番号を挿したポートの黄線に合わせて変える**だけです。
+
+```python
+from machine import Pin, ADC
+import time
+
+sensor = ADC(Pin(9)); sensor.atten(ADC.ATTN_11DB)  # 入力: PORT.B 黄=G9
+led = Pin(2, Pin.OUT)                                # 出力: PORT.A 黄=G2
+# 出力を PORT.C に挿すなら led = Pin(17, Pin.OUT)   # PORT.C 黄=G17
+
+while True:
+    if sensor.read_u16() > 30000:   # しきい値は実機で校正
+        led.value(1)
+    else:
+        led.value(0)
+    time.sleep(0.1)
+```
+
+> ポート別の黄線（信号:主）：**A=G2 / B=G9 / C=G17**。
+> 出力サンプル（`red_led.py` など）の `Pin(9, ...)` を、挿したポートの番号に置き換えれば、そのまま動きます。
+
+---
+
 → 入力モジュールは [10_Grove_入力サンプル.md](10_Grove_入力サンプル.md) を参照。
