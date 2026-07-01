@@ -6,10 +6,8 @@ Grove - Mini PIR Motion Sensor (SKU: 101020741)
 
 【この個体/モジュールの重要な実測ポイント】
   - 信号は「白線 = G8」に出る（黄線=G9 ではない）。
-  - 出力はオープンドレイン相当で、内部プルアップが必須。
-    プルアップ無し（素のIN）だと値が浮いてランダムに 0/1 し、正しく読めない。
-  - 極性はアクティブLOW：静止=HIGH(1)、動き検知=LOW(0)。
-    → 本サンプルは「値が 0 になったら動きあり」として判定する。
+  - 内部プルアップが必須。プルアップ無し（素のIN）だと値が浮いてランダムに 0/1 する。
+  - 極性：値=1(HIGH) のとき動きあり(detected)、値=0(LOW) のとき動きなし(no motion)。
 
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
 接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )  ※信号は 白線 = G8
@@ -25,11 +23,10 @@ import time  # type: ignore
 
 # --- 設定 ---------------------------------------------------------
 SIG_PIN = 8          # PORT.B 白線 (G8)  ※このモジュールは白線側に信号が出る
-INTERVAL = 0.1       # loop() の実行間隔 [秒]
+INTERVAL = 0.2       # loop() の実行間隔 [秒]
 
-# 内部プルアップ付き入力（オープンドレイン出力のため必須）
+# 内部プルアップ付き入力（プルアップ無しだと値が浮くため必須）
 pir = Pin(SIG_PIN, Pin.IN, Pin.PULL_UP)
-prev_motion = False  # 前回の状態（True=動きあり）
 
 
 def setup():
@@ -38,14 +35,10 @@ def setup():
 
 
 def loop():
-    global prev_motion
-    # アクティブLOW：値が 0 のとき動きを検知
-    motion = (pir.value() == 0)
-    if motion and not prev_motion:
-        print("MOTION : detected")        # 動きを検知した瞬間
-    elif not motion and prev_motion:
-        print("-      : no motion")        # 検知が解除された瞬間
-    prev_motion = motion
+    if pir.value() == 1:
+        print("MOTION : detected")        # 値=1 で動きあり
+    else:
+        print("-      : no motion")        # 値=0 で動きなし
     time.sleep(INTERVAL)
 
 
