@@ -1,5 +1,5 @@
 """
-Grove - Mini PIR Motion Sensor (SKU: 101020353)
+Grove - Mini PIR Motion Sensor (SKU: 101020741)
 -----------------------------------------------
 焦電型赤外線で人や動物の動きを検知する小型PIRモーションセンサー。
 動きを検知すると信号が HIGH になります。

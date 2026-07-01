@@ -1,5 +1,5 @@
 """
-Grove - Temperature & Humidity Sensor (DHT11) (SKU: 101020011)
+Grove - Temperature & Humidity Sensor (DHT11) (SKU: 101020739)
 -------------------------------------------------------------
 DHT11 による温度と湿度を同時計測する1線式デジタルセンサー。
 読み取りは 1 秒以上の間隔をあける必要があります。
