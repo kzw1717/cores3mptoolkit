@@ -150,7 +150,7 @@ from machine import Pin, ADC
 import time
 
 sensor = ADC(Pin(8)); sensor.atten(ADC.ATTN_11DB)  # 入力: PORT.B 信号=G8
-led = Pin(2, Pin.OUT)                                # 出力: PORT.A（G2 で動かなければ G1 を試す）
+led = Pin(1, Pin.OUT)                                # 出力: PORT.A（G1 で動かなければ G2 を試す）
 
 while True:
     if sensor.read_u16() > 30000:   # しきい値は実機で校正
