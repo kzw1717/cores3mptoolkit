@@ -18,24 +18,22 @@ import time
 SIG_PIN = 9          # PORT.B 黄線 (G9)
 INTERVAL = 0.5       # 点灯/消灯の間隔 [秒]
 
-# グローバル変数 (setup() で初期化)
-led = None
-state = 0
+# LED を出力として用意する
+led = Pin(SIG_PIN, Pin.OUT)
 
 
 def setup():
-    """起動時に一度だけ実行する初期化処理"""
-    global led
-    led = Pin(SIG_PIN, Pin.OUT)
+    """起動時に一度だけ実行する処理"""
     print("Grove Red LED 開始 (Ctrl-C で終了)")
 
 
 def loop():
-    """繰り返し実行する処理"""
-    global state
-    state = 1 - state            # 0/1 を反転
-    led.value(state)
-    print("LED:", "ON" if state else "off")
+    """繰り返し実行する処理：点灯 → 待つ → 消灯 → 待つ"""
+    led.value(1)              # 1 で点灯
+    print("LED: ON")
+    time.sleep(INTERVAL)
+    led.value(0)              # 0 で消灯
+    print("LED: off")
     time.sleep(INTERVAL)
 
 
@@ -45,5 +43,5 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    led.value(0)                 # 終了時は消灯
+    led.value(0)             # 終了時は消灯
     print("終了しました")

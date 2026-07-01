@@ -23,6 +23,37 @@ PC で .py を書く  →  USB で CoreS3 に接続  →  mpremote run で実行
 
 ---
 
+## Python 補足教材（サンプルを読む前に）
+
+M5Stack のサンプルは、プログラミング入門I で学ぶ基礎（変数・`if`・`while`・関数・`print` など）に、
+いくつか新しい書き方が加わります。**サンプルを読み解くには、次の補足教材を先に読む必要があります。**
+
+### [docs/30_M5Stack実装に向けたPython入門.md](docs/30_M5Stack実装に向けたPython入門.md) 〔全サンプル共通・必読〕
+
+`import`／メソッド呼び出し（`モノ.機能()`）／`try`・`except` の3つを解説します。
+これらは **すべてのサンプル（Grove・CoreS3 の全31本）** に共通で出てくるため、
+**どのサンプルを読む前にも、まずこの入門編に目を通してください。**
+
+### [docs/31_M5Stack実装に向けたPython入門2_発展編.md](docs/31_M5Stack実装に向けたPython入門2_発展編.md) 〔一部サンプルで必要〕
+
+特定のサンプルだけに出てくる発展的な書き方を解説します。
+**下記のサンプルを理解するには、発展編の該当項目を読む必要があります。**
+
+| 発展概念 | 読む必要があるサンプル |
+| --- | --- |
+| 論理演算子 `and`/`or`/`not` | [IM4] [touch_counter.py](https://github.com/kzw1717/cores3mptoolkit/blob/main/m5stack_samples/touch_counter.py), [IM5] [touch_button_single.py](https://github.com/kzw1717/cores3mptoolkit/blob/main/m5stack_samples/touch_button_single.py), [IM6] [touch_button_yesno.py](https://github.com/kzw1717/cores3mptoolkit/blob/main/m5stack_samples/touch_button_yesno.py), [OM14] [discord_text.py](https://github.com/kzw1717/cores3mptoolkit/blob/main/m5stack_samples/discord_text.py), [OM15] [discord_camera.py](https://github.com/kzw1717/cores3mptoolkit/blob/main/m5stack_samples/discord_camera.py) |
+| 条件付き表式（三項演算子） | [IG6] [moisture_sensor.py](https://github.com/kzw1717/cores3mptoolkit/blob/main/Level1_samples/moisture_sensor.py), [IM2] [battery_status.py](https://github.com/kzw1717/cores3mptoolkit/blob/main/m5stack_samples/battery_status.py) |
+| タプルの代入（複数まとめて受け取る） | [IM3] [imu_accel.py](https://github.com/kzw1717/cores3mptoolkit/blob/main/m5stack_samples/imu_accel.py), [IM5] [touch_button_single.py](https://github.com/kzw1717/cores3mptoolkit/blob/main/m5stack_samples/touch_button_single.py), [IM6] [touch_button_yesno.py](https://github.com/kzw1717/cores3mptoolkit/blob/main/m5stack_samples/touch_button_yesno.py) |
+| `for` でリストを順に処理 | [OM10] [speaker_tone.py](https://github.com/kzw1717/cores3mptoolkit/blob/main/m5stack_samples/speaker_tone.py) |
+| 辞書 / キーワード引数・デフォルト値 | [OM14] [discord_text.py](https://github.com/kzw1717/cores3mptoolkit/blob/main/m5stack_samples/discord_text.py), [OM15] [discord_camera.py](https://github.com/kzw1717/cores3mptoolkit/blob/main/m5stack_samples/discord_camera.py) |
+| `True`/`False` を返す関数 | [IM5] [touch_button_single.py](https://github.com/kzw1717/cores3mptoolkit/blob/main/m5stack_samples/touch_button_single.py), [IM6] [touch_button_yesno.py](https://github.com/kzw1717/cores3mptoolkit/blob/main/m5stack_samples/touch_button_yesno.py) |
+| 大域変数 `global` | [OM13] [display_hello.py](https://github.com/kzw1717/cores3mptoolkit/blob/main/m5stack_samples/display_hello.py) |
+
+> これらのサンプルは、上の発展概念を使っています。該当サンプルを読む前に、
+> 表の右側にある概念の項目を発展編で確認してください。
+
+---
+
 ## サンプル解説（入力 / 出力で整理）
 
 作りたいプログラムは、「**入力（読み取る）**」と「**出力（光らせる・鳴らす・表示する）**」の
