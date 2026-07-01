@@ -7,8 +7,8 @@ CoreS3 ディスプレイ ── 図形：直線（出力）
 API  : M5.Lcd.drawLine(x0, y0, x1, y1, color)
 """
 
-import M5
-import time
+import M5  # type: ignore
+import time  # type: ignore
 
 
 def setup():

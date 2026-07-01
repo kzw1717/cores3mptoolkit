@@ -7,8 +7,8 @@ CoreS3 ディスプレイ ── 図形：四角形（出力）
 API  : M5.Lcd.drawRect(x, y, w, h, color) / fillRect(x, y, w, h, color)
 """
 
-import M5
-import time
+import M5  # type: ignore
+import time  # type: ignore
 
 
 def setup():

@@ -7,8 +7,8 @@ CoreS3 ディスプレイ ── 図形：円（出力）
 API  : M5.Lcd.drawCircle(x, y, r, color) / fillCircle(x, y, r, color)
 """
 
-import M5
-import time
+import M5  # type: ignore
+import time  # type: ignore
 
 
 def setup():

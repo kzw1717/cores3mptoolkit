@@ -13,8 +13,8 @@ CoreS3 タッチUI ── タッチ回数カウンタ サンプル（入力）
 メモ : 内蔵フォントは日本語非対応のため画面は英字。日本語はターミナルに出します。
 """
 
-import M5
-import time
+import M5  # type: ignore
+import time  # type: ignore
 
 # --- 設定 ---------------------------------------------------------
 touch_count = 0

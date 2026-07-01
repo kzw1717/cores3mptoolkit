@@ -14,9 +14,9 @@ Grove - Temperature Sensor (SKU: 101020732)
          実機の表示がずれる場合は下の B / R0 を実測で校正してください。
 """
 
-from machine import Pin, ADC
-import math
-import time
+from machine import Pin, ADC  # type: ignore
+import math  # type: ignore
+import time  # type: ignore
 
 # --- 設定 ---------------------------------------------------------
 SIG_PIN = 9          # PORT.B 黄線 (G9)

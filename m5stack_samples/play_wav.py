@@ -17,9 +17,9 @@ WAV の条件（推奨）:
 - 長さ : 数秒程度（容量が大きいと転送・再生に時間がかかる）
 """
 
-import M5
-from M5 import *
-import time
+import M5  # type: ignore
+from M5 import *  # type: ignore
+import time  # type: ignore
 
 # --- 設定 ---------------------------------------------------------
 WAV_PATH = "sound.wav"    # 本体へ転送した WAV のパス（見つからない場合は "/flash/sound.wav" を試す）

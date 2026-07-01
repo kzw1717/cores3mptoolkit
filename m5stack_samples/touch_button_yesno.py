@@ -13,8 +13,8 @@ CoreS3 タッチUI ── YES / NO 2ボタン サンプル（入力）
 メモ : 内蔵フォントは日本語非対応のため画面は英字。日本語はターミナルに出します。
 """
 
-import M5
-import time
+import M5  # type: ignore
+import time  # type: ignore
 
 # --- 設定 ---------------------------------------------------------
 YES_BTN = (30, 80, 110, 80)    # (x, y, w, h)

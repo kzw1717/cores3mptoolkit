@@ -8,8 +8,8 @@ CoreS3 ディスプレイ ── 図形：円弧／扇形（出力）
 API  : M5.Lcd.drawArc(x, y, r0, r1, angle0, angle1, color) / fillArc(...)
 """
 
-import M5
-import time
+import M5  # type: ignore
+import time  # type: ignore
 
 
 def setup():

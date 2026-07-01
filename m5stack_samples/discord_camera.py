@@ -16,13 +16,13 @@ CoreS3 カメラ撮影 → Discord Webhook 画像送信サンプル（出力）
 メモ : camera / jpg モジュールは CoreS3 専用です。
 """
 
-import M5
-from M5 import *
-import network
-import requests2
-import camera
-import jpg
-import time
+import M5  # type: ignore
+from M5 import *  # type: ignore
+import network  # type: ignore
+import requests2  # type: ignore
+import camera  # type: ignore
+import jpg  # type: ignore
+import time  # type: ignore
 
 # --- 設定（自分の値に書き換える）---------------------------------
 WIFI_SSID = "your-wifi-ssid"

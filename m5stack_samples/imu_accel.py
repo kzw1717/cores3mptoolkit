@@ -11,9 +11,9 @@ CoreS3 内蔵 IMU (BMI270 + BMM150)  ── 入力サンプル
 参考 : https://uiflow-micropython.readthedocs.io/en/latest/hardware/imu.html
 """
 
-import M5
-from M5 import *      # Widgets, Imu などが使えるようになる
-import time
+import M5  # type: ignore
+from M5 import *  # type: ignore  # Widgets, Imu などが使えるようになる
+import time  # type: ignore
 
 # --- 設定 ---------------------------------------------------------
 INTERVAL = 0.2        # loop() の実行間隔 [秒]

@@ -11,9 +11,9 @@ CoreS3 内蔵 電源管理 (AXP2101)  ── 入力サンプル
 参考 : https://uiflow-micropython.readthedocs.io/en/latest/hardware/power.html
 """
 
-import M5
-from M5 import *
-import time
+import M5  # type: ignore
+from M5 import *  # type: ignore
+import time  # type: ignore
 
 # --- 設定 ---------------------------------------------------------
 INTERVAL = 1.0        # loop() の実行間隔 [秒]

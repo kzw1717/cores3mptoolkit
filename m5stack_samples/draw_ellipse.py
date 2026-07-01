@@ -7,8 +7,8 @@ CoreS3 ディスプレイ ── 図形：楕円（出力）
 API  : M5.Lcd.drawEllipse(x, y, rx, ry, color) / fillEllipse(x, y, rx, ry, color)
 """
 
-import M5
-import time
+import M5  # type: ignore
+import time  # type: ignore
 
 
 def setup():

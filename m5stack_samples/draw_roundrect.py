@@ -7,8 +7,8 @@ CoreS3 ディスプレイ ── 図形：角丸四角形（出力）
 API  : M5.Lcd.drawRoundRect(x, y, w, h, r, color) / fillRoundRect(x, y, w, h, r, color)
 """
 
-import M5
-import time
+import M5  # type: ignore
+import time  # type: ignore
 
 
 def setup():

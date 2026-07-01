@@ -15,11 +15,11 @@ Webhook の作り方（解説ページ参照）:
   URL をコピーして WEBHOOK_URL に貼る。
 """
 
-import M5
-from M5 import *
-import network
-import requests2
-import time
+import M5  # type: ignore
+from M5 import *  # type: ignore
+import network  # type: ignore
+import requests2  # type: ignore
+import time  # type: ignore
 
 # --- 設定（自分の値に書き換える）---------------------------------
 WIFI_SSID = "your-wifi-ssid"

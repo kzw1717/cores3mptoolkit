@@ -7,8 +7,8 @@ CoreS3 ディスプレイ ── 図形：三角形（出力）
 API  : M5.Lcd.drawTriangle(x0,y0,x1,y1,x2,y2,color) / fillTriangle(...)
 """
 
-import M5
-import time
+import M5  # type: ignore
+import time  # type: ignore
 
 
 def setup():

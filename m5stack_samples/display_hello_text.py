@@ -13,8 +13,8 @@ CoreS3 内蔵 ディスプレイ ── 文字表示のみ サンプル（出力
 メモ : 内蔵フォントは日本語非対応のため、画面は英字で表示します。
 """
 
-import M5
-import time
+import M5  # type: ignore
+import time  # type: ignore
 
 
 def setup():

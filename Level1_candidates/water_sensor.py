@@ -10,8 +10,8 @@ Grove - Water Sensor (SKU: 101020733)
 終了   : Ctrl-C (PC側ターミナルで送信)
 """
 
-from machine import Pin
-import time
+from machine import Pin  # type: ignore
+import time  # type: ignore
 
 # --- 設定 ---------------------------------------------------------
 SIG_PIN = 9          # PORT.B 黄線 (G9)

@@ -10,8 +10,8 @@ Grove - Moisture Sensor (SKU: 101020740)
 終了   : Ctrl-C (PC側ターミナルで送信)
 """
 
-from machine import Pin, ADC
-import time
+from machine import Pin, ADC  # type: ignore
+import time  # type: ignore
 
 # --- 設定 ---------------------------------------------------------
 SIG_PIN = 9          # PORT.B 黄線 (G9)

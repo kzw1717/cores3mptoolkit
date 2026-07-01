@@ -15,8 +15,8 @@ CoreS3 タッチUI ── 1ボタン サンプル（入力）
        日本語はターミナル（print）に出します。
 """
 
-import M5
-import time
+import M5  # type: ignore
+import time  # type: ignore
 
 # --- 設定 ---------------------------------------------------------
 BTN = (90, 90, 140, 60)    # ボタン領域 (x, y, w, h)

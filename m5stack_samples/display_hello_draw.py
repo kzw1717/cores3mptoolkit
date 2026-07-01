@@ -13,8 +13,8 @@ CoreS3 内蔵 ディスプレイ ── 図形描画のみ サンプル（出力
 座標系 : 画面は 320 x 240 px。左上が (0, 0)。色は 0xRRGGBB。
 """
 
-import M5
-import time
+import M5  # type: ignore
+import time  # type: ignore
 
 
 def setup():
