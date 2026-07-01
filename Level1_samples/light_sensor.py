@@ -5,17 +5,19 @@ Grove - Light Sensor v1.2 (SKU: 101020736)
 明るいほど値が大きくなります。
 
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
-接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )
-         センサーの信号は 黄線 = G9 (ADC) で読み取ります
+接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )  ※このモジュールは信号が G8 に出る
 実行   : python -m mpremote run light_sensor.py
 終了   : Ctrl-C (PC側ターミナルで送信)
+
+メモ   : Groveコネクタは信号線が2本（Port.BではG9とG8）あり、どちらを使うかはモジュール依存。
+         本センサはG8側に信号が出た（実機確認）。G9では明暗に反応しない。
 """
 
 from machine import Pin, ADC  # type: ignore
 import time  # type: ignore
 
 # --- 設定 ---------------------------------------------------------
-SIG_PIN = 9          # PORT.B 黄線 (G9)
+SIG_PIN = 8          # PORT.B 信号ピン（実機確認: このモジュールは G8 側）
 INTERVAL = 0.2       # loop() の実行間隔 [秒]
 
 # グローバル変数 (setup() で初期化)

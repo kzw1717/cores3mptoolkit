@@ -46,30 +46,24 @@ if not wlan.isconnected():   # まだ Wi-Fi につながっていなければ
 `if`〜`else` は学びましたが、「**条件によって値を1つ選ぶ**」だけなら、1行で書ける書き方があります。
 `Aになる値 if 条件 else Bになる値` の形です。
 
-`moisture_sensor.py`（土壌水分センサー）から引用します。
+`battery_status.py`（バッテリー状態表示）から引用します。
 
 ```python
-state = "WET" if value >= WET_LEVEL else "dry"
-# value が WET_LEVEL 以上なら "WET"、そうでなければ "dry" を state に入れる
+lbl_chg.setText("Charging: {}".format("YES" if charging else "no"))
+# charging が True なら "YES"、そうでなければ "no" を選んで表示する
 ```
 
 これは次の `if`〜`else` と**同じ意味**を、短く書いたものです。
 
 ```python
-if value >= WET_LEVEL:
-    state = "WET"
+if charging:
+    text = "YES"
 else:
-    state = "dry"
+    text = "no"
+lbl_chg.setText("Charging: {}".format(text))
 ```
 
-`red_led.py` や `battery_status.py` でも、表示の切り替えに使っています。
-
-```python
-print("LED:", "ON" if state else "off")                       # red_led.py
-lbl_chg.setText("Charging: {}".format("YES" if charging else "no"))  # battery_status.py
-```
-
-> 使用サンプル：`moisture_sensor.py`(IG6)、`red_led.py`(OG1)、`blue_led.py`(OG2)、`battery_status.py`(IM2)
+> 使用サンプル：`battery_status.py`(IM2)
 
 ---
 
@@ -215,6 +209,27 @@ def loop():
 エラーになります。「外の変数を関数から増やしていく」ときの、おまじないだと考えてください。
 
 > 使用サンプル：`display_hello.py`(OM13)
+
+---
+
+## 9. 数値計算（`math` モジュールと小数の表示）
+
+対数や平方根などの数学関数は、`math` モジュールを `import` して使います。
+`temperature_sensor.py`（温度センサー）では、サーミスタの抵抗値から温度を求めるのに
+`math.log`（自然対数）を使っています。
+
+```python
+import math
+
+tempC = 1.0 / (math.log(R / R0) / B + 1.0 / 298.15) - 273.15
+print("temp: {:.1f} C".format(tempC))   # {:.1f} は「小数第1位まで」の表示
+```
+
+`import math` の後は `math.log(...)`／`math.sqrt(...)` のように「モノ.機能()」の形で呼びます
+（[入門編](30_M5Stack実装に向けたPython入門.md)の「メソッド呼び出し」と同じ形）。
+表示の `"{:.1f}".format(値)` は、小数の桁数をそろえたいときの書き方です（`.1f`＝小数第1位まで）。
+
+> 使用サンプル：`temperature_sensor.py`(IG7)
 
 ---
 

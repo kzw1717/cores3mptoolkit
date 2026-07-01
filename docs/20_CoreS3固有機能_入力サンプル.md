@@ -8,7 +8,7 @@ Grove と違い**配線は不要**で、UIFlow2 の **M5 ライブラリ**で簡
 
 - **接続**：不要（すべて本体内蔵）。
 - **書き方**：`import M5` ＋ `from M5 import *`。`setup()` で `M5.begin()`、`loop()` で `M5.update()` を必ず呼ぶ。
-- **実行**：`mpremote run ファイル名.py`（VSCode は対象を開いて `Ctrl+Shift+B`）。
+- **実行**：`python -m mpremote run ファイル名.py`（VSCode は対象を開いて `Ctrl+Shift+B`）。
 - **停止**：PC 側ターミナルで `Ctrl-C`。
 
 ---

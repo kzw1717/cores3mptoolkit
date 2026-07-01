@@ -6,7 +6,7 @@ Grove - Temperature Sensor (SKU: 101020732)
    temperature = 1/(log(R/R0)/B + 1/298.15) - 273.15
 
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
-接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )  ※G8で再テスト中
+接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )  ※信号は G8
 実行   : python -m mpremote run temperature_sensor.py
 終了   : Ctrl-C (PC側ターミナルで送信)
 
