@@ -8,18 +8,20 @@ Grove - Sound Sensor (SKU: 101020735)
    （キット付属Arduinoスケッチの平均法を CoreS3 向けに改良）。
 
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
-接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )  信号は 黄線 = G9 (ADC)
+接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )  ※信号ピンは G8 で再テスト
 実行   : python -m mpremote run sound_sensor.py
 終了   : Ctrl-C (PC側ターミナルで送信)
 
 見方   : 無音では小さい値、声や拍手で大きい値になる。閾値で「音あり」を判定してもよい。
+メモ   : Groveコネクタは信号線が2本（Port.BではG9とG8）あり、どちらを使うかはモジュール依存。
+         以前G9で「音に反応しない」症状が出たが、信号がG8側だった可能性が高いためG8で再テスト。
 """
 
 from machine import Pin, ADC  # type: ignore
 import time  # type: ignore
 
 # --- 設定 ---------------------------------------------------------
-SIG_PIN = 9          # PORT.B 黄線 (G9)
+SIG_PIN = 8          # PORT.B 信号ピン（G8で再テスト）
 INTERVAL = 0.1       # loop() の実行間隔 [秒]
 WINDOW = 500         # 1回の測定で高速サンプリングする回数（音の波形をとらえる窓）
 

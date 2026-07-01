@@ -9,6 +9,12 @@ Grove - Red LED (SKU: 104020195)
 実行   : python -m mpremote run red_led.py
 終了   : Ctrl-C (PC側ターミナルで送信)
 
+停止   : ★出力（アクチュエータ）系の注意★ Ctrl-Cだけでは止まらないことがある。
+         `mpremote run` のCtrl-CはPC側mpremoteが終了するだけで、デバイス上のloop()は動き続け、
+         GPIOも最後の状態を保持するため、LEDが点滅（または点灯）し続けることがある。
+         確実に止めるには CoreS3 本体のリセットボタン、または別ターミナルで
+         `python -m mpremote reset`（ソフトリセット）を実行する。USB抜き差しでも停止。
+
 メモ   : Groveコネクタは信号線が2本（Port.BではG9とG8）あり、どちらを使うかはモジュール依存。
          本LEDはG8側で点滅した（実機確認）。G9では点灯しない。
 """
