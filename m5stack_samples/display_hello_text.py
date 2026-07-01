@@ -6,7 +6,7 @@ CoreS3 内蔵 ディスプレイ ── 文字表示のみ サンプル（出力
 
 対象 : M5Stack CoreS3 + UIFlow2 ファームウェア（M5 ライブラリ / M5.Lcd 描画）
 接続 : 不要（本体内蔵ディスプレイ）
-実行 : mpremote run display_hello_text.py    （VSCode は Ctrl+Shift+B）
+実行 : python -m mpremote run display_hello_text.py    （VSCode は Ctrl+Shift+B）
 終了 : Ctrl-C（PC側ターミナルで送信）
 参考 : https://uiflow-micropython.readthedocs.io/en/latest/widgets/index.html
 
@@ -42,7 +42,7 @@ def setup():
     M5.Lcd.setCursor(10, 150)
     M5.Lcd.print("value = {}".format(123))
 
-    print("文字表示サンプル (Ctrl-C で終了)")
+    print("Text sample (Ctrl-C to stop)")
 
 
 def loop():
@@ -56,4 +56,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

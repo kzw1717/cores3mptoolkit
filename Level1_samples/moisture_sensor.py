@@ -7,7 +7,7 @@ Grove - Moisture Sensor (SKU: 101020740)
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
 接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )
          センサーの信号は 黄線 = G9 (ADC) で読み取ります
-実行   : mpremote run moisture_sensor.py
+実行   : python -m mpremote run moisture_sensor.py
 終了   : Ctrl-C (PC側ターミナルで送信)
 """
 
@@ -28,7 +28,7 @@ def setup():
     global moisture
     moisture = ADC(Pin(SIG_PIN))
     moisture.atten(ADC.ATTN_11DB)   # 入力レンジ 0-3.3V
-    print("Grove Moisture Sensor 開始 (Ctrl-C で終了)")
+    print("Grove Moisture Sensor started (Ctrl-C to stop)")
 
 
 def loop():
@@ -45,4 +45,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

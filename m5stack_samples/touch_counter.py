@@ -6,7 +6,7 @@ CoreS3 タッチUI ── タッチ回数カウンタ サンプル（入力）
 
 対象 : M5Stack CoreS3 + UIFlow2 ファームウェア（M5 ライブラリ / M5.Lcd 描画）
 接続 : 不要（本体内蔵ディスプレイ＋タッチパネル）
-実行 : mpremote run touch_counter.py    （VSCode は Ctrl+Shift+B）
+実行 : python -m mpremote run touch_counter.py    （VSCode は Ctrl+Shift+B）
 終了 : Ctrl-C（PC側ターミナルで送信）
 参考 : Touch   https://uiflow-micropython.readthedocs.io/en/latest/hardware/touch.html
 
@@ -35,7 +35,7 @@ def on_touch():
     global touch_count
     touch_count += 1
     show_count()
-    print("{} 回タッチされました".format(touch_count))
+    print("Touched {} times".format(touch_count))
 
 
 def setup():
@@ -46,7 +46,7 @@ def setup():
     M5.Lcd.setCursor(10, 10)
     M5.Lcd.print("Tap anywhere on screen")
     show_count()
-    print("タッチカウンタ サンプル開始 (Ctrl-C で終了)")
+    print("Touch counter sample started (Ctrl-C to stop)")
 
 
 def loop():
@@ -65,4 +65,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

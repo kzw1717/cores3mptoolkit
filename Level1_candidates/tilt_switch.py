@@ -6,7 +6,7 @@ Grove - Tilt Switch (SKU: 111020063)
 
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
 接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )  信号は 黄線 = G9
-実行   : mpremote run tilt_switch.py
+実行   : python -m mpremote run tilt_switch.py
 終了   : Ctrl-C (PC側ターミナルで送信)
 """
 
@@ -21,14 +21,14 @@ tilt = Pin(SIG_PIN, Pin.IN)
 
 
 def setup():
-    print("Grove Tilt Switch 開始 (Ctrl-C で終了)")
+    print("Grove Tilt Switch started (Ctrl-C to stop)")
 
 
 def loop():
     if tilt.value() == 1:
-        print("ON  : 傾きを検知")
+        print("ON  : tilt detected")
     else:
-        print("off : 水平")
+        print("off : level")
     time.sleep(INTERVAL)
 
 
@@ -37,4 +37,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

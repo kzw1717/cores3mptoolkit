@@ -6,7 +6,7 @@ CoreS3 タッチUI ── YES / NO 2ボタン サンプル（入力）
 
 対象 : M5Stack CoreS3 + UIFlow2 ファームウェア（M5 ライブラリ / M5.Lcd 描画）
 接続 : 不要（本体内蔵ディスプレイ＋タッチパネル）
-実行 : mpremote run touch_button_yesno.py    （VSCode は Ctrl+Shift+B）
+実行 : python -m mpremote run touch_button_yesno.py    （VSCode は Ctrl+Shift+B）
 終了 : Ctrl-C（PC側ターミナルで送信）
 参考 : Touch   https://uiflow-micropython.readthedocs.io/en/latest/hardware/touch.html
 
@@ -53,7 +53,7 @@ def on_yes():
     global yes_count
     yes_count += 1
     show_status()
-    print("yes -> {} 回".format(yes_count))
+    print("yes -> {} times".format(yes_count))
 
 
 def on_no():
@@ -61,7 +61,7 @@ def on_no():
     global no_count
     no_count += 1
     show_status()
-    print("no -> {} 回".format(no_count))
+    print("no -> {} times".format(no_count))
 
 
 def setup():
@@ -74,7 +74,7 @@ def setup():
     draw_button(YES_BTN, "YES", 0x2E7D32)    # 緑
     draw_button(NO_BTN, "NO", 0xC62828)      # 赤
     show_status()
-    print("YES/NO サンプル開始 (Ctrl-C で終了)")
+    print("YES/NO sample started (Ctrl-C to stop)")
 
 
 def loop():
@@ -98,4 +98,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

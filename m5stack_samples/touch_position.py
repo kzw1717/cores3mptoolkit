@@ -6,7 +6,7 @@ CoreS3 内蔵 タッチパネル (FT6336U)  ── 入力サンプル
 
 対象 : M5Stack CoreS3 + UIFlow2 ファームウェア（M5 ライブラリ）
 接続 : 不要（本体内蔵タッチパネル）
-実行 : mpremote run touch_position.py    （VSCode は Ctrl+Shift+B）
+実行 : python -m mpremote run touch_position.py    （VSCode は Ctrl+Shift+B）
 終了 : Ctrl-C（PC側ターミナルで送信）
 参考 : https://uiflow-micropython.readthedocs.io/en/latest/hardware/touch.html
 """
@@ -27,8 +27,8 @@ def setup():
     M5.begin()
     Widgets.fillScreen(0x222222)
     Widgets.Title("CoreS3 Touch", 3, 0xFFFFFF, 0x0000FF, Widgets.FONTS.DejaVu18)
-    lbl = Widgets.Label("画面に触れてください", 6, 60, 1.0, 0xFFFFFF, 0x222222, Widgets.FONTS.DejaVu18)
-    print("タッチ座標 開始 (Ctrl-C で終了)")
+    lbl = Widgets.Label("Touch the screen", 6, 60, 1.0, 0xFFFFFF, 0x222222, Widgets.FONTS.DejaVu18)
+    print("Touch position started (Ctrl-C to stop)")
 
 
 def loop():
@@ -48,4 +48,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

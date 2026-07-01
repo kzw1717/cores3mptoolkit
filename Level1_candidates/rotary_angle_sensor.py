@@ -6,7 +6,7 @@ Grove - Rotary Angle Sensor (SKU: 101020734)
 
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
 接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )  信号は 黄線 = G9
-実行   : mpremote run rotary_angle_sensor.py
+実行   : python -m mpremote run rotary_angle_sensor.py
 終了   : Ctrl-C (PC側ターミナルで送信)
 """
 
@@ -24,7 +24,7 @@ adc.atten(ADC.ATTN_11DB)   # 0-3.3V を測れるようにする
 
 
 def setup():
-    print("Grove Rotary Angle Sensor 開始 (Ctrl-C で終了)")
+    print("Grove Rotary Angle Sensor started (Ctrl-C to stop)")
 
 
 def loop():
@@ -39,4 +39,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

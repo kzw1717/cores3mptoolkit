@@ -6,7 +6,7 @@ CoreS3 内蔵 IMU (BMI270 + BMM150)  ── 入力サンプル
 
 対象 : M5Stack CoreS3 + UIFlow2 ファームウェア（M5 ライブラリ）
 接続 : 不要（本体内蔵センサー）
-実行 : mpremote run imu_accel.py    （VSCode は Ctrl+Shift+B）
+実行 : python -m mpremote run imu_accel.py    （VSCode は Ctrl+Shift+B）
 終了 : Ctrl-C（PC側ターミナルで送信）
 参考 : https://uiflow-micropython.readthedocs.io/en/latest/hardware/imu.html
 """
@@ -30,7 +30,7 @@ def setup():
     Widgets.Title("CoreS3 IMU", 3, 0xFFFFFF, 0x0000FF, Widgets.FONTS.DejaVu18)
     lbl_acc = Widgets.Label("Acc:", 6, 50, 1.0, 0xFFFFFF, 0x222222, Widgets.FONTS.DejaVu18)
     lbl_gyr = Widgets.Label("Gyro:", 6, 110, 1.0, 0x00FF00, 0x222222, Widgets.FONTS.DejaVu18)
-    print("IMU 開始 (Ctrl-C で終了)")
+    print("IMU started (Ctrl-C to stop)")
 
 
 def loop():
@@ -50,4 +50,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

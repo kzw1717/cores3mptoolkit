@@ -7,7 +7,7 @@ Grove - Blue LED (SKU: 104020196)
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
 接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )
          LEDの制御信号は 黄線 = G9 です
-実行   : mpremote run blue_led.py
+実行   : python -m mpremote run blue_led.py
 終了   : Ctrl-C (PC側ターミナルで送信)
 """
 
@@ -24,7 +24,7 @@ led = Pin(SIG_PIN, Pin.OUT)
 
 def setup():
     """起動時に一度だけ実行する処理"""
-    print("Grove Blue LED 開始 (Ctrl-C で終了)")
+    print("Grove Blue LED started (Ctrl-C to stop)")
 
 
 def loop():
@@ -44,4 +44,4 @@ try:
         loop()
 except KeyboardInterrupt:
     led.value(0)             # 終了時は消灯
-    print("終了しました")
+    print("stopped")

@@ -6,7 +6,7 @@ CoreS3 内蔵 ディスプレイ ── 図形描画のみ サンプル（出力
 
 対象 : M5Stack CoreS3 + UIFlow2 ファームウェア（M5 ライブラリ / M5.Lcd 描画）
 接続 : 不要（本体内蔵ディスプレイ）
-実行 : mpremote run display_hello_draw.py    （VSCode は Ctrl+Shift+B）
+実行 : python -m mpremote run display_hello_draw.py    （VSCode は Ctrl+Shift+B）
 終了 : Ctrl-C（PC側ターミナルで送信）
 参考 : https://uiflow-micropython.readthedocs.io/en/latest/widgets/index.html
 
@@ -44,7 +44,7 @@ def setup():
     # 円弧（扇形）
     M5.Lcd.fillArc(220, 205, 20, 35, 0, 180, 0x9C27B0)
 
-    print("図形描画サンプル (Ctrl-C で終了)")
+    print("Shapes sample (Ctrl-C to stop)")
 
 
 def loop():
@@ -58,4 +58,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

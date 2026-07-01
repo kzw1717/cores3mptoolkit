@@ -7,7 +7,7 @@ Grove - Water Sensor (SKU: 101020733)
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
 接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )
          水センサーの信号は 黄線 = G9 で読み取ります
-実行   : mpremote run water_sensor.py
+実行   : python -m mpremote run water_sensor.py
 終了   : Ctrl-C
 """
 
@@ -28,15 +28,15 @@ def setup():
     # Grove Water Sensor はオープンコレクタ出力のため内部プルアップを使用
     # 水検知 -> LOW(0) / 乾燥 -> HIGH(1)
     water = Pin(SIG_PIN, Pin.IN, Pin.PULL_UP)
-    print("Grove Water Sensor 開始 (Ctrl-C で終了)")
+    print("Grove Water Sensor started (Ctrl-C to stop)")
 
 
 def loop():
     """繰り返し実行する処理"""
     if water.value() == 0:
-        print("WET : 水を検知しました")
+        print("WET : water detected")
     else:
-        print("dry : 乾燥")
+        print("dry : dry")
     time.sleep(INTERVAL)
 
 
@@ -46,4 +46,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

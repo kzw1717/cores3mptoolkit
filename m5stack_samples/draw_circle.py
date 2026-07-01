@@ -3,7 +3,7 @@ CoreS3 ディスプレイ ── 図形：円（出力）
 ------------------------------------------------------
 円を描きます。(x, y) が中心、r が半径です。
 
-実行 : mpremote run draw_circle.py    終了 : Ctrl-C
+実行 : python -m mpremote run draw_circle.py    終了 : Ctrl-C
 API  : M5.Lcd.drawCircle(x, y, r, color) / fillCircle(x, y, r, color)
 """
 
@@ -21,7 +21,7 @@ def setup():
 
     M5.Lcd.drawCircle(90, 130, 50, 0x33CCFF)    # 枠線（水色）
     M5.Lcd.fillCircle(230, 130, 50, 0x00FFFF)   # 塗りつぶし（シアン）
-    print("円を表示しました (Ctrl-C で終了)")
+    print("Circle drawn (Ctrl-C to stop)")
 
 
 def loop():
@@ -34,4 +34,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

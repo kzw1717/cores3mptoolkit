@@ -7,7 +7,7 @@ Grove - Ultrasonic Ranger (SKU: 101020743)
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
 接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )
          センサーの信号(SIG)は 黄線 = G9 です
-実行   : mpremote run ultrasonic_ranger.py
+実行   : python -m mpremote run ultrasonic_ranger.py
 終了   : Ctrl-C (PC側ターミナルで送信)
 """
 
@@ -39,14 +39,14 @@ def measure_cm():
 
 def setup():
     """起動時に一度だけ実行する初期化処理"""
-    print("Grove Ultrasonic Ranger 開始 (Ctrl-C で終了)")
+    print("Grove Ultrasonic Ranger started (Ctrl-C to stop)")
 
 
 def loop():
     """繰り返し実行する処理"""
     d = measure_cm()
     if d < 0:
-        print("range : 測定範囲外")
+        print("range : out of range")
     else:
         print("dist  : {:.1f} cm".format(d))
     time.sleep(INTERVAL)
@@ -58,4 +58,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

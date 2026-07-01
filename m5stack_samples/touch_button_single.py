@@ -6,7 +6,7 @@ CoreS3 タッチUI ── 1ボタン サンプル（入力）
 
 対象 : M5Stack CoreS3 + UIFlow2 ファームウェア（M5 ライブラリ / M5.Lcd 描画）
 接続 : 不要（本体内蔵ディスプレイ＋タッチパネル）
-実行 : mpremote run touch_button_single.py    （VSCode は Ctrl+Shift+B）
+実行 : python -m mpremote run touch_button_single.py    （VSCode は Ctrl+Shift+B）
 終了 : Ctrl-C（PC側ターミナルで送信）
 参考 : Touch   https://uiflow-micropython.readthedocs.io/en/latest/hardware/touch.html
        Display https://uiflow-micropython.readthedocs.io/en/latest/widgets/index.html
@@ -55,7 +55,7 @@ def on_button_pressed():
     global press_count
     press_count += 1
     show_status()
-    print("ボタンが {} 回押されました".format(press_count))
+    print("Button pressed {} times".format(press_count))
 
 
 def setup():
@@ -67,7 +67,7 @@ def setup():
     M5.Lcd.print("Touch the button")
     draw_button()
     show_status()
-    print("1ボタン サンプル開始 (Ctrl-C で終了)")
+    print("1-button sample started (Ctrl-C to stop)")
 
 
 def loop():
@@ -87,4 +87,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

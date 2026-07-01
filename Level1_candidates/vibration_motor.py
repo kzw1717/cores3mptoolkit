@@ -6,7 +6,7 @@ Grove - Vibration Motor (SKU: 108020121)
 
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
 接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )  信号は 黄線 = G9
-実行   : mpremote run vibration_motor.py
+実行   : python -m mpremote run vibration_motor.py
 終了   : Ctrl-C (PC側ターミナルで送信)
 """
 
@@ -21,15 +21,15 @@ motor = Pin(SIG_PIN, Pin.OUT)
 
 
 def setup():
-    print("Grove Vibration Motor 開始 (Ctrl-C で終了)")
+    print("Grove Vibration Motor started (Ctrl-C to stop)")
 
 
 def loop():
     motor.value(1)            # 振動
-    print("VIB : 振動")
+    print("VIB : vibrating")
     time.sleep(INTERVAL)
     motor.value(0)            # 停止
-    print("--- : 停止")
+    print("--- : stopped")
     time.sleep(INTERVAL)
 
 
@@ -39,4 +39,4 @@ try:
         loop()
 except KeyboardInterrupt:
     motor.value(0)            # 終了時は停止
-    print("終了しました")
+    print("stopped")

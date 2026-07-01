@@ -7,7 +7,7 @@ Grove - Button (SKU: 111020068)
 
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
 接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )  信号は 黄線 = G9
-実行   : mpremote run button.py
+実行   : python -m mpremote run button.py
 終了   : Ctrl-C (PC側ターミナルで送信)
 """
 
@@ -22,14 +22,14 @@ button = Pin(SIG_PIN, Pin.IN)
 
 
 def setup():
-    print("Grove Button 開始 (Ctrl-C で終了)")
+    print("Grove Button started (Ctrl-C to stop)")
 
 
 def loop():
     if button.value() == 1:
-        print("PRESSED : 押されています")
+        print("PRESSED : pressed")
     else:
-        print("----    : 離しています")
+        print("----    : released")
     time.sleep(INTERVAL)
 
 
@@ -38,4 +38,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

@@ -6,7 +6,7 @@ CoreS3 内蔵 電源管理 (AXP2101)  ── 入力サンプル
 
 対象 : M5Stack CoreS3 + UIFlow2 ファームウェア（M5 ライブラリ）
 接続 : 不要（本体内蔵 PMU）
-実行 : mpremote run battery_status.py    （VSCode は Ctrl+Shift+B）
+実行 : python -m mpremote run battery_status.py    （VSCode は Ctrl+Shift+B）
 終了 : Ctrl-C（PC側ターミナルで送信）
 参考 : https://uiflow-micropython.readthedocs.io/en/latest/hardware/power.html
 """
@@ -32,7 +32,7 @@ def setup():
     lbl_level = Widgets.Label("Battery:", 10, 55, 1.0, 0xFFFFFF, 0x222222, Widgets.FONTS.DejaVu18)
     lbl_volt = Widgets.Label("Voltage:", 10, 100, 1.0, 0xFFFFFF, 0x222222, Widgets.FONTS.DejaVu18)
     lbl_chg = Widgets.Label("Charging:", 10, 145, 1.0, 0xFFFFFF, 0x222222, Widgets.FONTS.DejaVu18)
-    print("バッテリー監視 開始 (Ctrl-C で終了)")
+    print("Battery monitor started (Ctrl-C to stop)")
 
 
 def loop():
@@ -54,4 +54,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

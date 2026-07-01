@@ -6,7 +6,7 @@ Grove - Switch(P) (SKU: 111020067)
 
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
 接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )  信号は 黄線 = G9
-実行   : mpremote run switch_p.py
+実行   : python -m mpremote run switch_p.py
 終了   : Ctrl-C (PC側ターミナルで送信)
 """
 
@@ -21,14 +21,14 @@ switch = Pin(SIG_PIN, Pin.IN)
 
 
 def setup():
-    print("Grove Switch(P) 開始 (Ctrl-C で終了)")
+    print("Grove Switch(P) started (Ctrl-C to stop)")
 
 
 def loop():
     if switch.value() == 1:
-        print("ON  : スイッチ ON")
+        print("ON  : switch ON")
     else:
-        print("off : スイッチ OFF")
+        print("off : switch OFF")
     time.sleep(INTERVAL)
 
 
@@ -37,4 +37,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

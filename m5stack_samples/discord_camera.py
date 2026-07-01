@@ -7,7 +7,7 @@ CoreS3 カメラ撮影 → Discord Webhook 画像送信サンプル（出力）
 対象 : M5Stack CoreS3 + UIFlow2 ファームウェア（M5 ライブラリ / camera・jpg モジュール）
 接続 : 不要（本体内蔵カメラ ＋ Wi-Fi を使用）
 準備 : 下の WIFI_SSID / WIFI_PASS / WEBHOOK_URL を自分の値に書き換える
-実行 : mpremote run discord_camera.py    （VSCode は Ctrl+Shift+B）
+実行 : python -m mpremote run discord_camera.py    （VSCode は Ctrl+Shift+B）
 終了 : Ctrl-C（PC側ターミナルで送信）
 参考 : camera   https://uiflow-micropython.readthedocs.io/en/latest/advanced/camera.html
        jpg      https://uiflow-micropython.readthedocs.io/en/latest/advanced/jpg.html
@@ -42,7 +42,7 @@ def connect_wifi(ssid, password, timeout=15):
         start = time.time()
         while not wlan.isconnected():
             if time.time() - start > timeout:
-                raise RuntimeError("Wi-Fi 接続タイムアウト")
+                raise RuntimeError("Wi-Fi connect timeout")
             time.sleep(0.5)
     return wlan.ifconfig()[0]
 
@@ -93,14 +93,14 @@ def setup():
     camera.init(pixformat=camera.RGB565, framesize=camera.QVGA)  # 320x240
 
     ip = connect_wifi(WIFI_SSID, WIFI_PASS)
-    print("Wi-Fi 接続OK  IP:", ip)
+    print("Wi-Fi connected  IP:", ip)
 
     jpeg_bytes = capture_jpeg()
-    print("撮影完了  JPEGサイズ:", len(jpeg_bytes), "bytes")
+    print("Captured  JPEG size:", len(jpeg_bytes), "bytes")
 
     code = send_image(jpeg_bytes)
-    print("Discord 応答コード:", code)   # 204（環境により200）なら送信成功
-    print("送信しました (Ctrl-C で終了)")
+    print("Discord response code:", code)   # 204（環境により200）なら送信成功
+    print("Sent (Ctrl-C to stop)")
 
 
 def loop():
@@ -114,4 +114,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

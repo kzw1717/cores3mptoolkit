@@ -6,7 +6,7 @@ Wi-Fi に接続し、Discord の Webhook URL にテキストメッセージを P
 対象 : M5Stack CoreS3 + UIFlow2 ファームウェア（M5 ライブラリ）
 接続 : 不要（Wi-Fi を使用）
 準備 : 下の WIFI_SSID / WIFI_PASS / WEBHOOK_URL を自分の値に書き換える
-実行 : mpremote run discord_text.py    （VSCode は Ctrl+Shift+B）
+実行 : python -m mpremote run discord_text.py    （VSCode は Ctrl+Shift+B）
 終了 : Ctrl-C（PC側ターミナルで送信）
 参考 : https://uiflow-micropython.readthedocs.io/en/latest/software/requests2.html
 
@@ -37,7 +37,7 @@ def connect_wifi(ssid, password, timeout=15):
         start = time.time()
         while not wlan.isconnected():
             if time.time() - start > timeout:
-                raise RuntimeError("Wi-Fi 接続タイムアウト")
+                raise RuntimeError("Wi-Fi connect timeout")
             time.sleep(0.5)
     return wlan.ifconfig()[0]   # 取得した IP アドレス
 
@@ -54,15 +54,15 @@ def setup():
     """起動時に一度だけ実行：Wi-Fi 接続 → メッセージ送信"""
     M5.begin()
     Widgets.fillScreen(0x222222)
-    label = Widgets.Label("Wi-Fi 接続中...", 10, 60, 1.0, 0xFFFFFF, 0x222222, Widgets.FONTS.DejaVu18)
+    label = Widgets.Label("Wi-Fi connecting...", 10, 60, 1.0, 0xFFFFFF, 0x222222, Widgets.FONTS.DejaVu18)
 
     ip = connect_wifi(WIFI_SSID, WIFI_PASS)
-    print("Wi-Fi 接続OK  IP:", ip)
-    label.setText("送信中...")
+    print("Wi-Fi connected  IP:", ip)
+    label.setText("Sending...")
 
     code = send_text(MESSAGE)
-    print("Discord 応答コード:", code)   # 204 なら送信成功
-    label.setText("送信完了 (code {})".format(code))
+    print("Discord response code:", code)   # 204 なら送信成功
+    label.setText("Sent (code {})".format(code))
 
 
 def loop():
@@ -76,4 +76,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")

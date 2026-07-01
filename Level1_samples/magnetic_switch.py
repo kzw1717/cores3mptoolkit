@@ -7,7 +7,7 @@ Grove - Magnetic Switch (SKU: 111020066)
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
 接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )
          センサーの信号は 黄線 = G9 で読み取ります
-実行   : mpremote run magnetic_switch.py
+実行   : python -m mpremote run magnetic_switch.py
 終了   : Ctrl-C (PC側ターミナルで送信)
 """
 
@@ -26,15 +26,15 @@ def setup():
     """起動時に一度だけ実行する初期化処理"""
     global magnet
     magnet = Pin(SIG_PIN, Pin.IN, Pin.PULL_DOWN)
-    print("Grove Magnetic Switch 開始 (Ctrl-C で終了)")
+    print("Grove Magnetic Switch started (Ctrl-C to stop)")
 
 
 def loop():
     """繰り返し実行する処理"""
     if magnet.value() == 1:
-        print("MAGNET : 磁石を検知しました")
+        print("MAGNET : magnet detected")
     else:
-        print("----   : 検知なし")
+        print("----   : no magnet")
     time.sleep(INTERVAL)
 
 
@@ -44,4 +44,4 @@ try:
     while True:
         loop()
 except KeyboardInterrupt:
-    print("終了しました")
+    print("stopped")
