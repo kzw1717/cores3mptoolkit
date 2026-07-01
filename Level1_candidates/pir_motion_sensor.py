@@ -2,30 +2,34 @@
 Grove - Mini PIR Motion Sensor (SKU: 101020741)
 -----------------------------------------------
 焦電型赤外線で人や動物の動きを検知する小型PIRモーションセンサー。
-動きを検知すると信号が HIGH になる。
 ※ キット付属Arduinoスケッチ（1_mini_pir_motion）を標準MicroPythonへ移植。
-   公式スケッチは毎回 "Hi, people is coming"(動きあり) / "Watching"(動きなし) を表示する。
-   本サンプルは状態が変化した瞬間だけ表示し、検知/解除のタイミングを分かりやすくしている。
+
+【この個体/モジュールの重要な実測ポイント】
+  - 信号は「白線 = G8」に出る（黄線=G9 ではない）。
+  - 出力はオープンドレイン相当で、内部プルアップが必須。
+    プルアップ無し（素のIN）だと値が浮いてランダムに 0/1 し、正しく読めない。
+  - 極性はアクティブLOW：静止=HIGH(1)、動き検知=LOW(0)。
+    → 本サンプルは「値が 0 になったら動きあり」として判定する。
 
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
-接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )  信号は 黄線 = G9
+接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )  ※信号は 白線 = G8
 実行   : python -m mpremote run pir_motion_sensor.py
 終了   : Ctrl-C (PC側ターミナルで送信)
 
-重要   : PIRは電源投入後 約30〜60秒 は出力が不安定（HIGHに張り付く）。この間の連続検知は
-         ウォームアップで正常。開始後しばらく動かず待ってから試すこと。
-         また向きで感度が変わるため、センサー面は水平に置くと安定する（キットTips）。
+重要   : PIRは電源投入後 約30〜60秒 は出力が不安定。開始後しばらく動かず待つこと。
+         向きで感度が変わるため、センサー面は動きを横切る向きに置くと安定（最適 約2m）。
 """
 
 from machine import Pin  # type: ignore
 import time  # type: ignore
 
 # --- 設定 ---------------------------------------------------------
-SIG_PIN = 9          # PORT.B 黄線 (G9)
+SIG_PIN = 8          # PORT.B 白線 (G8)  ※このモジュールは白線側に信号が出る
 INTERVAL = 0.1       # loop() の実行間隔 [秒]
 
-pir = Pin(SIG_PIN, Pin.IN)
-prev_state = 0       # 前回の状態（0=動きなし / 1=動きあり）
+# 内部プルアップ付き入力（オープンドレイン出力のため必須）
+pir = Pin(SIG_PIN, Pin.IN, Pin.PULL_UP)
+prev_motion = False  # 前回の状態（True=動きあり）
 
 
 def setup():
@@ -34,13 +38,14 @@ def setup():
 
 
 def loop():
-    global prev_state
-    state = pir.value()
-    if state == 1 and prev_state == 0:
-        print("MOTION : detected")        # 立ち上がり（動きを検知した瞬間）
-    elif state == 0 and prev_state == 1:
-        print("-      : no motion")        # 立ち下がり（検知が解除された瞬間）
-    prev_state = state
+    global prev_motion
+    # アクティブLOW：値が 0 のとき動きを検知
+    motion = (pir.value() == 0)
+    if motion and not prev_motion:
+        print("MOTION : detected")        # 動きを検知した瞬間
+    elif not motion and prev_motion:
+        print("-      : no motion")        # 検知が解除された瞬間
+    prev_motion = motion
     time.sleep(INTERVAL)
 
 
