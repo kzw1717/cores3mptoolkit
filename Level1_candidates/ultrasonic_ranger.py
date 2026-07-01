@@ -5,17 +5,19 @@ Grove - Ultrasonic Ranger (SKU: 101020743)
 1本の信号線(SIG)でトリガ送信とエコー受信を行います。測定範囲 約2〜350cm。
 
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
-接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )
-         センサーの信号(SIG)は 黄線 = G9 です
+接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )  ※このモジュールは信号(SIG)が G8 に出る
 実行   : python -m mpremote run ultrasonic_ranger.py
 終了   : Ctrl-C (PC側ターミナルで送信)
+
+メモ   : Groveコネクタは信号線が2本（Port.BではG9とG8）あり、どちらに出力するかはモジュール依存。
+         本センサはG8側にSIGが出た（実機確認）。G9ではエコーが返らず out of range になる。
 """
 
 from machine import Pin, time_pulse_us  # type: ignore
 import time  # type: ignore
 
 # --- 設定 ---------------------------------------------------------
-SIG_PIN = 9          # PORT.B 黄線 (G9)
+SIG_PIN = 8          # PORT.B 信号ピン（実機確認: このモジュールは G8 側）
 INTERVAL = 0.3       # loop() の実行間隔 [秒]
 TIMEOUT_US = 30000   # エコー待ちタイムアウト [マイクロ秒]
 
