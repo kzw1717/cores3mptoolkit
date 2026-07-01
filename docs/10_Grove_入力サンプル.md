@@ -35,7 +35,7 @@ Grove Creator Kit の **入力（センサー／スイッチ）モジュール**
 
 難易度の低い順に並べています。各見出しのリンクから `.py` を開けます。
 
-### 1. [magnetic_switch.py](../Level1_samples/magnetic_switch.py) ── 磁気スイッチ（難易度1）
+### IG1. [magnetic_switch.py](../Level1_samples/magnetic_switch.py) ── 磁気スイッチ（難易度1）
 
 磁石が近づくとスイッチが入る部品です。デジタル入力（ON/OFF）の一番やさしい例です。
 
@@ -47,7 +47,7 @@ if magnet.value() == 1:                   # 1=検知 / 0=なし
 
 ポイント：`Pin.PULL_DOWN`（内部プルダウン）を付けると、何もないときの値が 0 に安定します。
 
-### 2. [water_sensor.py](../Level1_samples/water_sensor.py) ── 水検知センサー（難易度2）
+### IG2. [water_sensor.py](../Level1_samples/water_sensor.py) ── 水検知センサー（難易度2）
 
 水や水滴があると反応します。**検知すると値が 0（LOW）**になる点に注意が必要です。
 
@@ -59,7 +59,7 @@ if water.value() == 0:                 # 0=水あり / 1=乾燥
 
 ポイント：磁気スイッチと逆で「0 が検知」です。`Pin.PULL_UP` を使います。
 
-### 2. [pir_motion_sensor.py](../Level1_samples/pir_motion_sensor.py) ── 人感（動き）センサー（難易度2）
+### IG3. [pir_motion_sensor.py](../Level1_samples/pir_motion_sensor.py) ── 人感（動き）センサー（難易度2）
 
 人や動物の動きを検知すると 1 になります。検知したときだけメッセージを出します。
 
@@ -71,7 +71,7 @@ if pir.value() == 1:
 
 ポイント：電源投入直後はセンサーが安定するまで数十秒かかることがあります。
 
-### 2. [light_sensor.py](../Level1_samples/light_sensor.py) ── 明るさセンサー（難易度2）
+### IG4. [light_sensor.py](../Level1_samples/light_sensor.py) ── 明るさセンサー（難易度2）
 
 明るさを **数値（0〜65535）** で読みます。アナログ入力（ADC）の基本形です。
 
@@ -83,7 +83,7 @@ value = light.read_u16()       # 0〜65535
 
 ポイント：`atten(ADC.ATTN_11DB)` と `read_u16()` の組み合わせがアナログ読み取りの定番です。
 
-### 2. [loudness_sensor.py](../Level1_samples/loudness_sensor.py) ── 音量センサー（難易度2）
+### IG5. [loudness_sensor.py](../Level1_samples/loudness_sensor.py) ── 音量センサー（難易度2）
 
 周囲の音の大きさを数値で読みます。コードは明るさセンサーとほぼ同じです。
 
@@ -95,7 +95,7 @@ value = sound.read_u16()       # 0〜65535
 
 ポイント：瞬間的な音を捉えたいときは `INTERVAL`（読み取り間隔）をさらに短くします。
 
-### 3. [moisture_sensor.py](../Level1_samples/moisture_sensor.py) ── 土壌水分センサー（難易度3）
+### IG6. [moisture_sensor.py](../Level1_samples/moisture_sensor.py) ── 土壌水分センサー（難易度3）
 
 土の水分量をアナログで読み、**しきい値**と比べて WET / dry を判定します。
 
@@ -107,7 +107,7 @@ state = "WET" if value >= WET_LEVEL else "dry"
 
 ポイント：アナログ値＋しきい値判定の練習になります。`WET_LEVEL` は実機で校正してください。
 
-### 3. [dht11.py](../Level1_samples/dht11.py) ── 温湿度センサー DHT11（難易度3）
+### IG7. [dht11.py](../Level1_samples/dht11.py) ── 温湿度センサー DHT11（難易度3）
 
 温度と湿度を**専用ライブラリ**でまとめて読みます。
 
@@ -121,7 +121,7 @@ print(sensor.temperature(), sensor.humidity())
 ポイント：`dht` は MicroPython 標準搭載で追加導入不要。読み取りは **2秒以上の間隔**が必要で、
 失敗に備えて `try / except OSError` で囲んでいます。
 
-### 5. [ultrasonic_ranger.py](../Level1_samples/ultrasonic_ranger.py) ── 超音波距離センサー（難易度5）
+### IG8. [ultrasonic_ranger.py](../Level1_samples/ultrasonic_ranger.py) ── 超音波距離センサー（難易度5）
 
 1本の信号線で「トリガ送信」と「エコー受信」の両方を行うため、**ピンの入出力を
 切り替え**ながらパルス幅を測り、距離[cm]に換算します。最も応用的なサンプルです。
