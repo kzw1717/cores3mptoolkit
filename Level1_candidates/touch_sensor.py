@@ -8,16 +8,19 @@ Grove - Touch Sensor (SKU: 101020746)
    タッチの有無をターミナルに表示する。
 
 対象   : M5Stack CoreS3 + UIFlow2 ファームウェア (MicroPython)
-接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )  信号は 黄線 = G9
+接続   : PORT.B  ( 黒=GND / 赤=5V / 黄=G9 / 白=G8 )  ※このモジュールは信号が G8 に出る
 実行   : python -m mpremote run touch_sensor.py
 終了   : Ctrl-C (PC側ターミナルで送信)
+
+メモ   : Groveコネクタは信号線が2本（pin1/pin2）あり、どちらに出力するかはモジュール依存。
+         本センサはCoreS3 Port.Bで G8 側に信号が出た（実機確認）。G9では反応しない。
 """
 
 from machine import Pin  # type: ignore
 import time  # type: ignore
 
 # --- 設定 ---------------------------------------------------------
-SIG_PIN = 9          # PORT.B 黄線 (G9)
+SIG_PIN = 8          # PORT.B 信号ピン（実機確認: このモジュールは G8 側）
 INTERVAL = 0.2       # loop() の実行間隔 [秒]
 
 touch = Pin(SIG_PIN, Pin.IN)
