@@ -35,8 +35,12 @@ def setup():
 
 def loop():
     a = adc.read_u16()
-    if a <= 0:
-        a = 1                                   # 0除算よけ
+    # 5V動作センサのため、CoreS3(3.3V)ではADCが上限(65535付近)に張り付くことがある。
+    # そのとき resistance=0 → log(0) で math domain error になるためガードする。
+    if a <= 1 or a >= ADC_MAX - 1:
+        print("raw:", a, " (out of range: 5V sensor saturates CoreS3 3.3V ADC)")
+        time.sleep(INTERVAL)
+        return
     resistance = (ADC_MAX - a) * R0 / a         # サーミスタ抵抗値
     tempC = 1.0 / (math.log(resistance / R0) / B + 1.0 / 298.15) - 273.15
     print("raw:", a, " temp: {:.1f} C".format(tempC))
