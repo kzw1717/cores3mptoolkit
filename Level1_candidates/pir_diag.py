@@ -1,30 +1,29 @@
 """
-PIR 診断用スクリプト（Level1確定後に削除する一時ファイル）
+PIR 診断用スクリプト v2（Level1確定後に削除する一時ファイル）
 ------------------------------------------------------
-Grove Mini PIR Motion Sensor の信号が G9 / G8 のどちらに、どんな値で来ているかを
-0.5秒ごとに生表示して切り分ける。3パターンを同時に確認する:
-  - G9(IN)           : プルなしで読んだ値
-  - G8(IN)           : 配線が逆だった場合の確認
-  - G9(PULL_DOWN)    : 出力がオープン系で浮いている場合の確認
+G9・G8 を「両方とも素の入力（プルなし）」で読み、どちらが動きに反応するかを切り分ける。
+※ v1 はピン9にプルダウンを重ねて設定してしまい G9 の読みを汚していたので修正版。
 
 実行 : python -m mpremote run pir_diag.py    終了 : Ctrl-C
-使い方: 起動後30〜60秒は動かず待つ→その後センサー前で手を振り、値が 1 に変わるか観察する。
+テスト手順（値と動きを対応づけるために決まったパターンで動く）:
+  1. 起動後90秒は動かず待つ（PIRウォームアップ）
+  2. センサー前で手を3秒振る → 5秒じっとする、を数回くり返す
+  3. 手を振っているときに 0→1 に変わるピンが本物の信号
 """
 
 from machine import Pin  # type: ignore
 import time  # type: ignore
 
-g9 = Pin(9, Pin.IN)
-g8 = Pin(8, Pin.IN)
-g9pd = Pin(9, Pin.IN, Pin.PULL_DOWN)
+g9 = Pin(9, Pin.IN)      # PORT.B 黄線
+g8 = Pin(8, Pin.IN)      # PORT.B 白線
 
 
 def setup():
-    print("PIR diag started (Ctrl-C to stop)")
+    print("PIR diag v2 started (Ctrl-C to stop)")
 
 
 def loop():
-    print("G9={} G8={} G9pd={}".format(g9.value(), g8.value(), g9pd.value()))
+    print("G9={}  G8={}".format(g9.value(), g8.value()))
     time.sleep(0.5)
 
 
